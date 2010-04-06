@@ -26,4 +26,11 @@ describe "LayoutLinks" do
     response.should render_template('users/new')
   end
 
+  describe "when not signed in" do
+    it "should have signin link" do
+      get '/'
+      response.should have_tag("a[href=?]", signin_path, "Sign in")
+    end
+  end
+
 end
